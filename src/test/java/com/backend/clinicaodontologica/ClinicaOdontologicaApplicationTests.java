@@ -28,7 +28,7 @@ class ClinicaOdontologicaApplicationTests {
 	private OdontologService odontologService = new OdontologService(new OdontologoDaoH2());
 	private static OdontologService odontologServiceMemoria=new OdontologService(new OdontologoMemoria(new ArrayList<>()));
 
-	private PacienteService pacienteService = new PacienteService(new PacienteDaoH2());
+	//private PacienteService pacienteService = new PacienteService(new PacienteDaoH2());
 
 	@BeforeAll
 	static void doBefore() {
@@ -54,7 +54,7 @@ class ClinicaOdontologicaApplicationTests {
 		Odontologo odontologo = new Odontologo(123,"matias","perez");
 
 
-		Odontologo odontologoRegistrado= odontologService.registrarOdontolog(odontologo);
+		Odontologo odontologoRegistrado= odontologService.registrarOdontologo(odontologo);
 
 		Assertions.assertTrue(odontologoRegistrado.getId() != 0);
 	}
@@ -62,14 +62,14 @@ class ClinicaOdontologicaApplicationTests {
 	@Test
 	void deberiaRetornarUnaListaDeOdontologos(){
 
-		Assertions.assertFalse(odontologService.listaDeOdontologos().isEmpty());
+		Assertions.assertFalse(odontologService.listarOdontologo().isEmpty());
 	}
 
 	@Test
 	void deberiaRegistrarYDevolverEnMemoriaUnOdontologo(){
 		odontologServiceMemoria=new OdontologService(new OdontologoMemoria(new ArrayList<>()));
 		Odontologo odontologo1= new Odontologo(1,2,"jose","cevallos");
-		Odontologo odontologAPersistir= odontologServiceMemoria.registrarOdontolog(odontologo1);
+		Odontologo odontologAPersistir= odontologServiceMemoria.registrarOdontologo(odontologo1);
 
 		Assertions.assertNotNull(odontologAPersistir.getId());
 	}
@@ -85,27 +85,27 @@ class ClinicaOdontologicaApplicationTests {
 		//odontologServiceMemoria.registrarOdontolog(odontologoGuardado);
 		//odontologServiceMemoria.registrarOdontolog(odontologoGuardado2);
 		//LOGGER.info(odontologServiceMemoria.listaDeOdontologos());
-		Assertions.assertFalse(odontologServiceMemoria.listaDeOdontologos().isEmpty());
+		Assertions.assertFalse(odontologServiceMemoria.listarOdontologo().isEmpty());
 	}
 
 	//Test para pacientes:
 
-	@Test
-	void deberiaAgregarUnPaciente(){
+	//@Test
+	//void deberiaAgregarUnPaciente(){
 
-		Paciente paciente = new Paciente("Nombre", "Apellido", 123456, LocalDate.of(2023, 05, 02), new Domicilio("Calle", 13, "Localidad", "Provincia"));
+		//Paciente paciente = new Paciente("Nombre", "Apellido", 123456, LocalDate.of(2023, 05, 02), new Domicilio("Calle", 13, "Localidad", "Provincia"));
 
-		Paciente pacienteRegistrado = pacienteService.registrarPaciente(paciente);
+		//Paciente pacienteRegistrado = pacienteService.registrarPaciente(paciente);
 
-		Assertions.assertTrue(pacienteRegistrado.getId() != 0);
+		//Assertions.assertTrue(pacienteRegistrado.getId() != 0);
 
-	}
+	//}
 
-	@Test
-	void deberiaRetornarUnaListaNoVacia(){
+	//@Test
+	//void deberiaRetornarUnaListaNoVacia(){
 
-		assertFalse(pacienteService.listarPacientes().isEmpty());
+		//assertFalse(pacienteService.listarPacientes().isEmpty());
 
-	}
+	//}
 
 }

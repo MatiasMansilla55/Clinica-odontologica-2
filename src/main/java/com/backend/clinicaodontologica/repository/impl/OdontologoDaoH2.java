@@ -6,11 +6,13 @@ import com.backend.clinicaodontologica.repository.IDao;
 import com.backend.clinicaodontologica.model.Odontologo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class OdontologoDaoH2 implements IDao<Odontologo> {
 
     private static Logger LOGGER = LoggerFactory.getLogger(OdontologoDaoH2.class);
@@ -109,6 +111,11 @@ public class OdontologoDaoH2 implements IDao<Odontologo> {
     @Override
     public void eliminar(int id) {
 
+    }
+
+    @Override
+    public Odontologo actualizar(Odontologo odontologo) {
+        return null;
     }
 
 }

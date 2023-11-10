@@ -10,6 +10,9 @@ public class Domicilio {
     private String localidad;
     private String provincia;
 
+    public Domicilio() {
+    }
+
     public Domicilio(int id, String calle, int numero, String localidad, String provincia) {
         this.id = id;
         this.calle = calle;

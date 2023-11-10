@@ -45,4 +45,9 @@ public class OdontologoMemoria implements IDao<Odontologo> {
     public void eliminar(int id) {
 
     }
+
+    @Override
+    public Odontologo actualizar(Odontologo odontologo) {
+        return null;
+    }
 }
