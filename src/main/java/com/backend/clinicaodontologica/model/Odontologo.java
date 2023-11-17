@@ -1,12 +1,26 @@
 package com.backend.clinicaodontologica.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "ODONTOLOGOS")
 public class Odontologo {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    @Column(length = 50)
     private int matricula;
+
+    @Column(length = 50)
     private String nombre;
+    @Column(length = 50)
     private String apellido;
 
+    public  Odontologo(){
 
+    }
     public Odontologo(int id, int matricula, String nombre, String apellido) {
         this.id = id;
         this.matricula = matricula;

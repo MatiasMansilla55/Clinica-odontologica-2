@@ -1,5 +1,7 @@
 package com.backend.clinicaodontologica;
 
+import com.backend.clinicaodontologica.dto.entrada.odontologo.OdontologoEntradaDto;
+import com.backend.clinicaodontologica.dto.salida.odontologo.OdontologoSalidaDto;
 import com.backend.clinicaodontologica.repository.impl.OdontologoDaoH2;
 import com.backend.clinicaodontologica.repository.impl.OdontologoMemoria;
 import com.backend.clinicaodontologica.repository.impl.PacienteDaoH2;
@@ -11,6 +13,7 @@ import com.backend.clinicaodontologica.service.impl.PacienteService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,8 +28,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 @SpringBootTest
 class ClinicaOdontologicaApplicationTests {
 	private static Logger LOGGER = LoggerFactory.getLogger(ClinicaOdontologicaApplicationTests.class);
-	private OdontologService odontologService = new OdontologService(new OdontologoDaoH2());
-	private static OdontologService odontologServiceMemoria=new OdontologService(new OdontologoMemoria(new ArrayList<>()));
+	private OdontologService odontologService = new OdontologService(new OdontologoDaoH2(),new ModelMapper());
+	private static OdontologService odontologServiceMemoria=new OdontologService(new OdontologoMemoria(new ArrayList<>()),new ModelMapper());
 
 	//private PacienteService pacienteService = new PacienteService(new PacienteDaoH2());
 
@@ -51,10 +54,10 @@ class ClinicaOdontologicaApplicationTests {
 
 	@Test
 	void deberiaRegistrarYRetonarUnOdontologo(){
-		Odontologo odontologo = new Odontologo(123,"matias","perez");
+		OdontologoEntradaDto odontologoEntradaDtoDto = new OdontologoEntradaDto(123,"matias","perez");
 
 
-		Odontologo odontologoRegistrado= odontologService.registrarOdontologo(odontologo);
+		OdontologoSalidaDto odontologoRegistrado= odontologService.registrarOdontologo(odontologoEntradaDtoDto);
 
 		Assertions.assertTrue(odontologoRegistrado.getId() != 0);
 	}
@@ -67,9 +70,9 @@ class ClinicaOdontologicaApplicationTests {
 
 	@Test
 	void deberiaRegistrarYDevolverEnMemoriaUnOdontologo(){
-		odontologServiceMemoria=new OdontologService(new OdontologoMemoria(new ArrayList<>()));
-		Odontologo odontologo1= new Odontologo(1,2,"jose","cevallos");
-		Odontologo odontologAPersistir= odontologServiceMemoria.registrarOdontologo(odontologo1);
+		odontologServiceMemoria=new OdontologService(new OdontologoMemoria(new ArrayList<>()),new ModelMapper());
+		OdontologoEntradaDto odontologo1= new OdontologoEntradaDto(2,"jose","cevallos");
+		OdontologoSalidaDto odontologAPersistir= odontologServiceMemoria.registrarOdontologo(odontologo1);
 
 		Assertions.assertNotNull(odontologAPersistir.getId());
 	}
