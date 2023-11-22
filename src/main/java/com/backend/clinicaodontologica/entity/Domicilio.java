@@ -1,7 +1,4 @@
-package com.backend.clinicaodontologica.model;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
+package com.backend.clinicaodontologica.entity;
 
 import javax.persistence.*;
 

@@ -1,4 +1,4 @@
-package com.backend.clinicaodontologica.model;
+package com.backend.clinicaodontologica.entity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

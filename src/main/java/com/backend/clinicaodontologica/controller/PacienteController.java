@@ -1,8 +1,8 @@
 package com.backend.clinicaodontologica.controller;
 
 import com.backend.clinicaodontologica.dto.entrada.paciente.PacienteEntradaDto;
+import com.backend.clinicaodontologica.dto.modificacion.PacienteModificacionEntradaDto;
 import com.backend.clinicaodontologica.dto.salida.paciente.PacienteSalidaDto;
-import com.backend.clinicaodontologica.model.Paciente;
 
 import com.backend.clinicaodontologica.service.impl.IPacienteService;
 
@@ -26,7 +26,7 @@ public class PacienteController {
 
 
     @GetMapping("/buscarId")
-    public String buscarPacientePorId(Model model, @RequestParam int id){
+    public String buscarPacientePorId(Model model, @RequestParam Long id){
         PacienteSalidaDto paciente = pacienteService.buscarPacientePorId(id);
 
         model.addAttribute("nombre", paciente.getNombre());
@@ -45,7 +45,7 @@ public class PacienteController {
        return new ResponseEntity<>(pacienteService.registrarPaciente(paciente), HttpStatus.CREATED);
     }
     @DeleteMapping("/eliminar/{id}")
-    public  ResponseEntity<Void> eliminarPaciente(@PathVariable int id){
+    public  ResponseEntity<Void> eliminarPaciente(@PathVariable Long id){
         pacienteService.eliminarPaciente(id);
       return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -54,11 +54,11 @@ public class PacienteController {
 
     //buscar paciente con PathVariable
     @GetMapping("{id}")
-    public ResponseEntity<PacienteSalidaDto> obtenerPacientePorId(@PathVariable int id){
+    public ResponseEntity<PacienteSalidaDto> obtenerPacientePorId(@PathVariable Long id){
         return new ResponseEntity<>(pacienteService.buscarPacientePorId(id), HttpStatus.OK);
     }
     @PutMapping("/actualizar")
-    public ResponseEntity<PacienteSalidaDto> actualizarPaciente(@RequestBody PacienteEntradaDto paciente){
+    public ResponseEntity<PacienteSalidaDto> actualizarPaciente(@RequestBody PacienteModificacionEntradaDto paciente){
         return new ResponseEntity<>(pacienteService.actualizarPaciente(paciente),HttpStatus.OK);
     }
 

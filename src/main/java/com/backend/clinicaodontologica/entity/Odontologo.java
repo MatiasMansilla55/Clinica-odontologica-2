@@ -1,4 +1,4 @@
-package com.backend.clinicaodontologica.model;
+package com.backend.clinicaodontologica.entity;
 
 import javax.persistence.*;
 
@@ -8,7 +8,7 @@ public class Odontologo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     @Column(length = 50)
     private int matricula;
@@ -21,7 +21,7 @@ public class Odontologo {
     public  Odontologo(){
 
     }
-    public Odontologo(int id, int matricula, String nombre, String apellido) {
+    public Odontologo(Long id, int matricula, String nombre, String apellido) {
         this.id = id;
         this.matricula = matricula;
         this.nombre = nombre;
@@ -58,11 +58,11 @@ public class Odontologo {
         this.apellido = apellido;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -1,7 +1,4 @@
-package com.backend.clinicaodontologica.model;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
+package com.backend.clinicaodontologica.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -11,7 +8,7 @@ import java.time.LocalDate;
 public class Paciente {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
     @Column(length = 50)
     private String nombre;
     @Column(length = 50)
@@ -27,7 +24,7 @@ public class Paciente {
         // Constructor predeterminado sin argumentos
     }
 
-    public Paciente(int id, String nombre, String apellido, int dni, LocalDate fechaIngreso, Domicilio domicilio) {
+    public Paciente(Long id, String nombre, String apellido, int dni, LocalDate fechaIngreso, Domicilio domicilio) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -44,11 +41,11 @@ public class Paciente {
         this.domicilio = domicilio;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

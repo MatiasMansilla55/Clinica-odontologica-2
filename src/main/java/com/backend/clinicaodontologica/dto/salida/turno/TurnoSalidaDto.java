@@ -1,9 +1,8 @@
 package com.backend.clinicaodontologica.dto.salida.turno;
 
-import com.backend.clinicaodontologica.model.Odontologo;
-import com.backend.clinicaodontologica.model.Paciente;
+import com.backend.clinicaodontologica.entity.Odontologo;
+import com.backend.clinicaodontologica.entity.Paciente;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 
 public class TurnoSalidaDto {

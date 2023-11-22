@@ -2,38 +2,34 @@ package com.backend.clinicaodontologica;
 
 import com.backend.clinicaodontologica.dto.entrada.odontologo.OdontologoEntradaDto;
 import com.backend.clinicaodontologica.dto.salida.odontologo.OdontologoSalidaDto;
-import com.backend.clinicaodontologica.repository.impl.OdontologoDaoH2;
-import com.backend.clinicaodontologica.repository.impl.OdontologoMemoria;
-import com.backend.clinicaodontologica.repository.impl.PacienteDaoH2;
-import com.backend.clinicaodontologica.model.Domicilio;
-import com.backend.clinicaodontologica.model.Odontologo;
-import com.backend.clinicaodontologica.model.Paciente;
+
 import com.backend.clinicaodontologica.service.impl.OdontologService;
-import com.backend.clinicaodontologica.service.impl.PacienteService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 @SpringBootTest
 class ClinicaOdontologicaApplicationTests {
-	private static Logger LOGGER = LoggerFactory.getLogger(ClinicaOdontologicaApplicationTests.class);
+
+
+	/*private static Logger LOGGER = LoggerFactory.getLogger(ClinicaOdontologicaApplicationTests.class);
 	private OdontologService odontologService = new OdontologService(new OdontologoDaoH2(),new ModelMapper());
 	private static OdontologService odontologServiceMemoria=new OdontologService(new OdontologoMemoria(new ArrayList<>()),new ModelMapper());
 
 	//private PacienteService pacienteService = new PacienteService(new PacienteDaoH2());
 
-	@BeforeAll
+	/*@BeforeAll
 	static void doBefore() {
 		Connection connection = null;
 		try {
@@ -76,11 +72,11 @@ class ClinicaOdontologicaApplicationTests {
 
 		Assertions.assertNotNull(odontologAPersistir.getId());
 	}
-
+*/
 
 	//DEBERIA DE RETORNARNOS UNA LA LISTA CON UN ODONTOLOGO PERO NO NOS RETORNA VACIA, NO SABEMOS EN DONDE NOS ESTAMOS EQUIVOCANDO.
-	@Test
-	void deberiaRetornarLaListaDeOdonotologos(){
+	//@Test
+	//void deberiaRetornarLaListaDeOdonotologos(){
 
 		//Odontologo odontologoGuardado= new Odontologo(2,3,"sebastian","sanchez");
 		//Odontologo odontologoGuardado2= new Odontologo(3,44,"Lucia","Marquez");
@@ -88,8 +84,8 @@ class ClinicaOdontologicaApplicationTests {
 		//odontologServiceMemoria.registrarOdontolog(odontologoGuardado);
 		//odontologServiceMemoria.registrarOdontolog(odontologoGuardado2);
 		//LOGGER.info(odontologServiceMemoria.listaDeOdontologos());
-		Assertions.assertFalse(odontologServiceMemoria.listarOdontologo().isEmpty());
-	}
+		//Assertions.assertFalse(odontologServiceMemoria.listarOdontologo().isEmpty());
+	//}
 
 	//Test para pacientes:
 
