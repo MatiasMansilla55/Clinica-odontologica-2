@@ -1,16 +1,28 @@
-function deleteBy(id)
-{
-           //con fetch invocamos a la API de turno con el método DELETE
-           //pasandole el id en la URL
-          const url = '/odontologos/eliminar'+ id;
-          const settings = {
-              method: 'DELETE'
-          }
-          fetch(url,settings)
-          .then(response => response.json())
+function deleteBy(id) {
+    const url = 'http://localhost:8081/odontologos/eliminar/' + id;
+    const settings = {
+        method: 'DELETE'
+    };
 
-          //borrar la fila del estudiante eliminado
-          let row_id = "#tr_" + id;
-          document.querySelector(row_id).remove();
+    fetch(url, settings)
+        .then(response => {
+            // Verificar si la respuesta fue exitosa (código de estado 2xx)
+            if (!response.ok) {
+                throw new Error('Error al eliminar el odontólogo');
+            }
 
+            // No hay datos en la respuesta, solo devolver una cadena vacía
+            return response.text();
+        })
+        .then(data => {
+            // Hacer algo con la respuesta si es necesario
+            console.log('Respuesta del servidor:', data);
+
+            // Borrar la fila del odontólogo eliminado
+            let row_id = "#tr_" + id;
+            document.querySelector(row_id).remove();
+        })
+        .catch(error => {
+            console.error('Error durante la eliminación:', error);
+        });
 }

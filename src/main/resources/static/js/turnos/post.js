@@ -9,8 +9,10 @@ window.addEventListener('load', function () {
 
         //creamos un JSON que tendrá los datos del nuevo paciente
         const formData = {
-            name: document.querySelector('#nombre').value,
-            lastname: document.querySelector('#apellido').value,
+            id:document.querySelector('#id').value,
+            nombre: document.querySelector('#nombre').value,
+            apellido: document.querySelector('#apellido').value,
+            id_odontologo: document.querySelector('#id_odontologo').value,
 
         };
 
@@ -36,7 +38,7 @@ window.addEventListener('load', function () {
 
                  document.querySelector('#response').innerHTML = successAlert;
                  document.querySelector('#response').style.display = "block";
-                 //se dejan todos los campos vacíos por si se quiere ingresar otro paciente
+                 //se dejan todos los campos vacíos por si se quiere ingresar otro turno
                  resetUploadForm();
 
             })
@@ -54,8 +56,10 @@ window.addEventListener('load', function () {
     });
 
     function resetUploadForm(){
+        document.querySelector('#id').value = "";
         document.querySelector('#nombre').value = "";
         document.querySelector('#apellido').value = "";
+        document.querySelector('#id_odontologo').value
 
     }
 

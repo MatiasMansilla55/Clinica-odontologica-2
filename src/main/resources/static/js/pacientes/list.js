@@ -3,7 +3,7 @@ window.addEventListener('load', function () {
     (function(){
       //con fetch invocamos a la API de pacientes con el método GET
       //nos devolverá un JSON con una colección de estudiantes
-      const url = '/pacientes/listar';
+      const url = 'http://localhost:8081/pacientes/listar';
       const settings = {
         method: 'GET'
     }
@@ -24,7 +24,7 @@ window.addEventListener('load', function () {
 
           //por cada paciente creamos un boton delete que agregaremos en cada fila para poder eliminar la misma
           //dicho boton invocara a la funcion de java script deleteByKey que se encargará
-          //de llamar a la API para eliminar al estudiante
+          //de llamar a la API para eliminar al paciente
            let deleteButton = '<button' +
                                       ' id=' + '\"' + 'btn_delete_' + paciente.id + '\"' +
                                       ' type="button" onclick="deleteBy('+paciente.id+')" class="btn btn-danger btn_delete">' +
@@ -46,8 +46,8 @@ window.addEventListener('load', function () {
           //luego los datos del paciente
           //como ultima columna el boton eliminar
          pacienteRow.innerHTML = '<td>' + updateButton + '</td>' +
-                              '<td class=\"td_first_name\">' + paciente.name.toUpperCase() + '</td>' +
-                              '<td class=\"td_last_name\">' + paciente.lastname.toUpperCase() + '</td>' +
+                              '<td class=\"td_first_name\">' + paciente.nombre.toUpperCase() + '</td>' +
+                              '<td class=\"td_last_name\">' + paciente.apellido.toUpperCase() + '</td>' +
                               '<td>' + deleteButton + '</td>';
 
         };

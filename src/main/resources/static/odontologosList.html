@@ -16,10 +16,10 @@
 <div class="container">
     <ul class="nav nav-pills">
         <li class="nav-item">
-            <a class="nav-link" href="/">Agregar nuevo</a>
+            <a class="nav-link" href="odontologoAlta.html">Agregar nuevo</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/odontologosList.html/">Todas</a>
+            <a class="nav-link" href="odontologosList.html/">Todas</a>
         </li>
     </ul>
 
@@ -30,6 +30,7 @@
                 <thead>
                 <tr>
                     <th>Id</th>
+                    <th>Matricula</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th></th>
@@ -48,6 +49,10 @@
                 <div class="form-group">
                     <label >Id:</label>
                     <input type="text" class="form-control" id="odontologo_id" readonly>
+                </div>
+                <div class="form-group">
+                    <label >Matricula:</label>
+                    <input type="number" class="form-control" placeholder="Matricula" id="matricula">
                 </div>
                 <div class="form-group">
                     <label >Nombre:</label>

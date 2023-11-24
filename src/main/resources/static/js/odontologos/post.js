@@ -9,8 +9,9 @@ window.addEventListener('load', function () {
 
         //creamos un JSON que tendrá los datos del nuevo odontologo
         const formData = {
-            name: document.querySelector('#nombre').value,
-            lastname: document.querySelector('#apellido').value,
+            matricula:document.querySelector('#matricula').value,
+            nombre: document.querySelector('#nombre').value,
+            apellido: document.querySelector('#apellido').value,
 
         };
 
@@ -54,6 +55,7 @@ window.addEventListener('load', function () {
     });
 
     function resetUploadForm(){
+        document.querySelector('#matricula').value = "";
         document.querySelector('#nombre').value = "";
         document.querySelector('#apellido').value = "";
 

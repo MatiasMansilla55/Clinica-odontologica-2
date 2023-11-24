@@ -6,6 +6,7 @@ import com.backend.clinicaodontologica.dto.entrada.turno.TurnoEntradaDto;
 
 import com.backend.clinicaodontologica.dto.modificacion.TurnosModificacionEntradaDto;
 
+import com.backend.clinicaodontologica.dto.salida.odontologo.OdontologoSalidaDto;
 import com.backend.clinicaodontologica.dto.salida.turno.TurnoSalidaDto;
 
 import com.backend.clinicaodontologica.exceptions.BadRequestException;
@@ -45,5 +46,11 @@ public class TurnoController {
     public ResponseEntity<TurnoSalidaDto> actualizarOdontologo(@RequestBody TurnosModificacionEntradaDto turno){
 
         return new ResponseEntity<>(turnoService.actualizarTurno(turno),HttpStatus.OK);
+    }
+    @GetMapping("/buscarId/{id}")
+    public TurnoSalidaDto buscarPorId(@PathVariable Long id){
+        return  turnoService.buscarTurnoPorId(id);
+
+
     }
 }

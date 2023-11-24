@@ -29,6 +29,12 @@ public class OdontologoController {
 
         return "odontologo";
     }
+    @GetMapping("/buscarId/{id}")
+    public OdontologoSalidaDto buscarPorId(@PathVariable Long id){
+        return  odontologoService.buscarOdontologoPorId(id);
+
+
+    }
 
     @GetMapping("/listar")
     public ResponseEntity<List<OdontologoSalidaDto>> listarOdontologos(){
