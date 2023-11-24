@@ -9,6 +9,7 @@ import com.backend.clinicaodontologica.utils.JsonPrinter;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,15 +21,13 @@ public class PacienteService implements IPacienteService {
     private PacienteRepository pacienteRepository;
     private ModelMapper modelMapper;
 
+    @Autowired
     public PacienteService(PacienteRepository pacienteRepository, ModelMapper modelMapper) {
         this.pacienteRepository = pacienteRepository;
         this.modelMapper = modelMapper;
         configureMapping();
     }
 
-    public PacienteRepository getPacienteRepository() {
-        return pacienteRepository;
-    }
 
     public PacienteSalidaDto registrarPaciente(PacienteEntradaDto paciente){
 
@@ -66,6 +65,7 @@ public class PacienteService implements IPacienteService {
         Paciente pacienteBuscado = pacienteRepository.findById(id).orElse(null);
         PacienteSalidaDto pacienteEncontrado = null;
 
+        LOGGER.debug("Paciente buscado con ID {}: {}", id, pacienteBuscado);
         if(pacienteBuscado != null){
             pacienteEncontrado =  modelMapper.map(pacienteBuscado, PacienteSalidaDto.class);
             LOGGER.info("Paciente encontrado: {}", JsonPrinter.toString(pacienteEncontrado));

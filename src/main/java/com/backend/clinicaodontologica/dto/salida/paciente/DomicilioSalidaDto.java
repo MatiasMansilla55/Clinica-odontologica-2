@@ -4,14 +4,14 @@ public class DomicilioSalidaDto {
 
     private Long id;
     private String calle;
-    private int numero;
+    private Long numero;
     private String localidad;
     private String provincia;
 
     public DomicilioSalidaDto() {
     }
 
-    public DomicilioSalidaDto(Long id, String calle, int numero, String localidad, String provincia) {
+    public DomicilioSalidaDto(Long id, String calle, Long numero, String localidad, String provincia) {
         this.id = id;
         this.calle = calle;
         this.numero = numero;
@@ -35,11 +35,11 @@ public class DomicilioSalidaDto {
         this.calle = calle;
     }
 
-    public int getNumero() {
+    public Long getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(Long numero) {
         this.numero = numero;
     }
 

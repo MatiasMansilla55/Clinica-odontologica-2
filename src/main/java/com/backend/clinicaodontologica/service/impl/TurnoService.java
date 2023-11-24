@@ -8,12 +8,10 @@ import com.backend.clinicaodontologica.dto.modificacion.TurnosModificacionEntrad
 import com.backend.clinicaodontologica.dto.salida.odontologo.OdontologoSalidaDto;
 import com.backend.clinicaodontologica.dto.salida.paciente.PacienteSalidaDto;
 import com.backend.clinicaodontologica.dto.salida.turno.TurnoSalidaDto;
-import com.backend.clinicaodontologica.entity.Odontologo;
-import com.backend.clinicaodontologica.entity.Paciente;
+
 import com.backend.clinicaodontologica.entity.Turno;
 import com.backend.clinicaodontologica.exceptions.BadRequestException;
-import com.backend.clinicaodontologica.repository.OdontologoRepository;
-import com.backend.clinicaodontologica.repository.PacienteRepository;
+
 import com.backend.clinicaodontologica.repository.TurnoRepository;
 import com.backend.clinicaodontologica.utils.JsonPrinter;
 import org.modelmapper.ModelMapper;
@@ -43,43 +41,39 @@ public class TurnoService implements ITurnoService {
     }
 
     @Override
-        public TurnoSalidaDto registrarTurno(TurnoEntradaDto turno) throws BadRequestException {
-            LOGGER.info("TurnoEntradaDto: " + JsonPrinter.toString(turno));
-            Turno turnoEntidad = modelMapper.map(turno, Turno.class);
-        PacienteSalidaDto turnoPacienteAgendado= pacienteService.buscarPacientePorId(turnoEntidad.getPaciente().getId());
-        OdontologoSalidaDto turnoOdontologoAgendado= odontologService.buscarOdontologoPorId(turnoEntidad.getOdontologo().getId());
-        TurnoSalidaDto turnoSalidaDto=null;
-        if(turnoOdontologoAgendado==null){
-            LOGGER.error("No fue posible registrar el turno porque no se encuentra el odontologo en la base de datos");
-            throw new BadRequestException("No se ha encontrado el odontologo");
+    public TurnoSalidaDto registrarTurno(TurnoEntradaDto turno) throws BadRequestException {
+        LOGGER.info("TurnoEntradaDto: " + JsonPrinter.toString(turno));
+        Turno turnoEntidad = modelMapper.map(turno, Turno.class);
+        PacienteSalidaDto turnoPacienteAgendado = pacienteService.buscarPacientePorId(turnoEntidad.getPaciente().getId());
+        OdontologoSalidaDto turnoOdontologoAgendado = odontologService.buscarOdontologoPorId(turnoEntidad.getOdontologo().getId());
+        TurnoSalidaDto turnoSalidaDto = null;
 
-        }
-        if(turnoPacienteAgendado==null){
+        if (turnoPacienteAgendado != null && turnoOdontologoAgendado != null) {
+            turnoRepository.save(turnoEntidad);
+            turnoSalidaDto = modelMapper.map(turnoEntidad, TurnoSalidaDto.class);
+            LOGGER.info("TurnoSalidaDto: " + JsonPrinter.toString(turno));
+        } else if (turnoPacienteAgendado == null && turnoOdontologoAgendado != null) {
             LOGGER.error("No fue posible registrar el turno porque no se encuentra el paciente en la base de datos");
-            throw new BadRequestException("No se ha encontrado el odontologo");
-
-        }
-        if(turnoOdontologoAgendado==null && turnoPacienteAgendado==null){
+            throw new BadRequestException("No se ha encontrado el paciente");
+        } else if (turnoPacienteAgendado != null && turnoOdontologoAgendado == null) {
+            LOGGER.error("No fue posible registrar el turno porque no se encuentra el odontologo en la base de datos");
+            throw new BadRequestException("No se ha encontrado el odontologo ");
+        } else {
             LOGGER.error("No fue posible registrar el turno porque no se encuentra el paciente o el odontologo en la base de datos");
             throw new BadRequestException("No se ha encontrado el odontologo y el paciente");
         }
-        else {
-                //LOGGER.error("No fue posible registrar el turno porque no se encuentra el paciente o el odontologo en la base de datos");
-                //lanzar excepcion correspondiente
-            turnoRepository.save(turnoEntidad);
-            turnoSalidaDto= modelMapper.map(turnoEntidad,TurnoSalidaDto.class);
-            }
 
-            return turnoSalidaDto;
-        }
+        return turnoSalidaDto;
+    }
 
-        @Override
+
+    @Override
         public List<TurnoSalidaDto> listarTurnos() {
             List<TurnoSalidaDto> turnosSalidaDtos = turnoRepository.findAll()
                     .stream()
                     .map(turno -> modelMapper.map(turno, TurnoSalidaDto.class))
                     .toList();
-            LOGGER.info("Listado de todos los pacientes: {}", JsonPrinter.toString(turnosSalidaDtos));
+            LOGGER.info("Listado de todos los turnos: {}", JsonPrinter.toString(turnosSalidaDtos));
             return turnosSalidaDtos;
         }
 

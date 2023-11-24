@@ -13,7 +13,7 @@ public class Domicilio {
     private String calle;
 
     @Column(length = 8)
-    private int numero;
+    private Long numero;
 
     @Column(length = 50)
     private String localidad;
@@ -24,7 +24,7 @@ public class Domicilio {
     public Domicilio() {
     }
 
-    public Domicilio(int id, String calle, int numero, String localidad, String provincia) {
+    public Domicilio(int id, String calle, Long numero, String localidad, String provincia) {
         this.id = id;
         this.calle = calle;
         this.numero = numero;
@@ -33,7 +33,7 @@ public class Domicilio {
     }
 
 
-    public Domicilio(String calle, int numero, String localidad, String provincia) {
+    public Domicilio(String calle, Long numero, String localidad, String provincia) {
         this.calle = calle;
         this.numero = numero;
         this.localidad = localidad;
@@ -56,11 +56,11 @@ public class Domicilio {
         this.calle = calle;
     }
 
-    public int getNumero() {
+    public Long getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(Long numero) {
         this.numero = numero;
     }
 
