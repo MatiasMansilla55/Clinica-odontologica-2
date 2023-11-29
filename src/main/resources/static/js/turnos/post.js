@@ -6,18 +6,35 @@ window.addEventListener('load', function () {
 
     //Ante un submit del formulario se ejecutará la siguiente funcion
     formulario.addEventListener('submit', function (event) {
-
-        //creamos un JSON que tendrá los datos del nuevo paciente
+        event.preventDefault();
+        //creamos un JSON que tendrá los datos del nuevo turno
         const formData = {
-            id:document.querySelector('#id').value,
-            nombre: document.querySelector('#nombre').value,
-            apellido: document.querySelector('#apellido').value,
-            id_odontologo: document.querySelector('#id_odontologo').value,
+         fechaYHora: document.querySelector('#fecha').value,
+         paciente: {
+         id: document.querySelector('#id_paciente').value,
+         nombre: document.querySelector('#nombre_paciente').value,
+         apellido: document.querySelector('#apellido_paciente').value,
+         dni: document.querySelector('#dni').value,
+         fechaDeIngreso: document.querySelector('#fechaDeIngreso').value,
+         domicilio:{
+         id:document.querySelector('#id_domicilio').value,
+         calle:document.querySelector('#calle').value,
+         numero:document.querySelector('#numero_calle').value,
+         localidad:document.querySelector('#localidad').value,
+         provincia:document.querySelector('#provincia').value,
+         }
+         },
+         odontologo:{
+         id:document.querySelector('#id_odontologo').value,
+         matricula:document.querySelector('#matricula').value,
+         nombre:document.querySelector('#nombre_odontologo').value,
+         apellido:document.querySelector('#apellido_odontologo').value,
 
+         }
         };
 
         //invocamos utilizando la función fetch la API turnos con el método POST
-        //que guardará al estudiante que enviaremos en formato JSON
+        //que guardará al turno que enviaremos en formato JSON
         const url = 'http://localhost:8081/turnos/registrar';
         const settings = {
             method: 'POST',
@@ -56,10 +73,22 @@ window.addEventListener('load', function () {
     });
 
     function resetUploadForm(){
-        document.querySelector('#id').value = "";
-        document.querySelector('#nombre').value = "";
-        document.querySelector('#apellido').value = "";
-        document.querySelector('#id_odontologo').value
+      document.querySelector('#fecha').value="";
+      document.querySelector('#id_paciente').value="";
+      document.querySelector('#nombre_paciente').value="";
+      document.querySelector('#apellido_paciente').value="";
+      document.querySelector('#dni').value="";
+      document.querySelector('#fechaDeIngreso').value="";
+      document.querySelector('#id_domicilio').value="";
+      document.querySelector('#calle').value="";
+      document.querySelector('#numero_calle').value="";
+      document.querySelector('#localidad').value="";
+      document.querySelector('#provincia').value="";
+      document.querySelector('#id_odontologo').value="";
+      document.querySelector('#matricula').value="";
+      document.querySelector('#nombre_odontologo').value="";
+      document.querySelector('#apellido_odontologo').value="";
+
 
     }
 

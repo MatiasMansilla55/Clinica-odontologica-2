@@ -3,51 +3,47 @@ package com.backend.clinicaodontologica.service.impl;
 import com.backend.clinicaodontologica.dto.entrada.paciente.DomicilioEntradaDto;
 import com.backend.clinicaodontologica.dto.entrada.paciente.PacienteEntradaDto;
 import com.backend.clinicaodontologica.dto.salida.paciente.PacienteSalidaDto;
-
 import com.backend.clinicaodontologica.entity.Paciente;
-import org.junit.Before;
-import org.junit.jupiter.api.Assertions;
+import com.backend.clinicaodontologica.exceptions.ResourceNotFoundException;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.test.context.TestPropertySource;
 
 import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-@RunWith(SpringRunner.class)
+
 @SpringBootTest
-@Transactional
+
 class PacienteServiceTest {
 
     @Autowired
     private PacienteService pacienteService;
 
-    @Autowired
-    public PacienteServiceTest(PacienteService pacienteService) {
-        this.pacienteService = pacienteService;
-    }
+
 
 
     @Test
-    void deberiaRegistrarUnPaciente() {
+    @Order(1)
+    void deberiaRegistrarUnPacienteConUnId() {
 
-        PacienteEntradaDto paciente = new PacienteEntradaDto("Nombre", "Apellido", 123456, LocalDate.of(2023, 05, 02), new DomicilioEntradaDto("Calle", 123L, "Localidad", "Provincia"));
+        PacienteEntradaDto pacienteEntradaDto = new PacienteEntradaDto("Juan", "Perez", 123456789, LocalDate.of(2023, 12, 24), new DomicilioEntradaDto("calle", 1234L, "Localidad", "Provincia"));
 
-        PacienteSalidaDto pacienteRegistrado = pacienteService.registrarPaciente(paciente);
+        PacienteSalidaDto pacienteSalidaDto = pacienteService.registrarPaciente(pacienteEntradaDto);
 
-        Assertions.assertTrue(pacienteRegistrado.getId() != 0);
+        assertNotNull(pacienteSalidaDto.getId());
+        assertEquals("Juan", pacienteSalidaDto.getNombre());
 
     }
 
     @Test
+    @Order(2)
     void deberiaRetornarUnaListaNoVacia() {
-        // Registra un paciente específico para este test
-        PacienteEntradaDto paciente = new PacienteEntradaDto("Nombre", "Apellido", 123456, LocalDate.of(2023, 05, 02), new DomicilioEntradaDto("Calle", 123L, "Localidad", "Provincia"));
-        pacienteService.registrarPaciente(paciente);
 
         // Lista los pacientes y verifica que la lista no esté vacía
         List<PacienteSalidaDto> pacientes = pacienteService.listarPacientes();
@@ -56,14 +52,13 @@ class PacienteServiceTest {
     }
 
     @Test
-    void deberiaRetornarUnPacientePorId() {
-        // Registra un paciente específico para este test
-        PacienteEntradaDto paciente = new PacienteEntradaDto("Nombre", "Apellido", 123456, LocalDate.of(2023, 05, 02), new DomicilioEntradaDto("Calle", 123L, "Localidad", "Provincia"));
-        PacienteSalidaDto pacienteSalidaDto=pacienteService.registrarPaciente(paciente);
+    @Order(3)
+    void deberiaRetornarUnPacienteConIdIgualA1() {
 
-        // Lista los pacientes y verifica que la lista no esté vacía
-        PacienteSalidaDto pacienteSalidaDto2 = pacienteService.buscarPacientePorId(pacienteSalidaDto.getId());
-        assertSame(pacienteSalidaDto.getId(), pacienteSalidaDto2.getId());
+
+
+        PacienteSalidaDto pacienteSalidaDto2 = pacienteService.buscarPacientePorId(1L);
+        assertFalse(pacienteSalidaDto2.getId()!=1);
     }
 
 }

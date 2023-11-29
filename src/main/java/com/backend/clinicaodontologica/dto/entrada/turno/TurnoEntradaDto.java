@@ -1,11 +1,8 @@
 package com.backend.clinicaodontologica.dto.entrada.turno;
 
-import com.backend.clinicaodontologica.dto.entrada.odontologo.OdontologoEntradaDto;
-import com.backend.clinicaodontologica.dto.entrada.paciente.PacienteEntradaDto;
+
 import com.backend.clinicaodontologica.dto.salida.odontologo.OdontologoSalidaDto;
 import com.backend.clinicaodontologica.dto.salida.paciente.PacienteSalidaDto;
-import com.backend.clinicaodontologica.entity.Odontologo;
-import com.backend.clinicaodontologica.entity.Paciente;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

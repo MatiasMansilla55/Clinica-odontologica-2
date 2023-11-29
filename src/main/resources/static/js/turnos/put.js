@@ -4,17 +4,26 @@ window.addEventListener('load', function () {
     //los datos que el usuario pudo haber modificado del turno
     const formulario = document.querySelector('#update_turno_form');
     formulario.addEventListener('submit', function (event) {
+        event.preventDefault();
         let turnoId = document.querySelector('#turno_id').value;
 
         //creamos un JSON que tendrá los datos del turno
         //a diferencia de un turno nuevo en este caso enviamos el id
         //para poder identificarlo y modificarlo para no cargarlo como nuevo
         const formData = {
-            id: document.querySelector('#turno_id').value,
-            nombre: document.querySelector('#nombre').value,
-            apellido: document.querySelector('#apellido').value,
+                id: document.querySelector('#turno_id').value,
+                fechaYHora: document.querySelector('#fechaYHora').value,
+                odontologoModificacionEntradaDto:{
+                nombre:document.querySelector('#nombre_odontologo').value,
+                apellido:document.querySelector('#apellido_odontologo').value,
 
-        };
+                },
+               pacienteModificacionEntradaDto: {
+                nombre: document.querySelector('#nombre_paciente').value,
+               apellido: document.querySelector('#apellido_paciente').value,
+                }
+
+              };
 
         //invocamos utilizando la función fetch la API turnos con el método PUT
         //que modificará al turno que enviaremos en formato JSON
@@ -43,10 +52,13 @@ window.addEventListener('load', function () {
           fetch(url,settings)
           .then(response => response.json())
           .then(data => {
-              let student = data;
+              let turno = data;
               document.querySelector('#turno_id').value = turno.id;
-              document.querySelector('#nombre').value = turno.nombre;
-              document.querySelector('#apellido').value = turno.apellido;
+              document.querySelector('#fechaYHora').value = turno.fechaYHora;
+              document.querySelector('#nombre_paciente').value = turno.paciente.nombre;
+              document.querySelector('#apellido_paciente').value = turno.paciente.apellido;
+              document.querySelector('#nombre_odontologo').value = turno.odontologo.nombre;
+              document.querySelector('#apellido_odontologo').value = turno.odontologo.apellido;
 
             //el formulario por default esta oculto y al editar se habilita
               document.querySelector('#div_turno_updating').style.display = "block";

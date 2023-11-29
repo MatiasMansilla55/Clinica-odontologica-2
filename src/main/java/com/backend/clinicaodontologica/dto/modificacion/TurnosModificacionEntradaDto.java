@@ -21,20 +21,19 @@ public class TurnosModificacionEntradaDto {
 
     @NotNull(message = "El odontologo no puede estar nulo")
     @Valid
-    private Odontologo odontologo;
+    private OdontologoModificacionEntradaDto odontologoModificacionEntradaDto;
 
     @NotNull(message = "El domicilio del paciente no puede ser nulo")
     @Valid
-    private Paciente paciente;
+    private PacienteModificacionEntradaDto pacienteModificacionEntradaDto;
 
     public TurnosModificacionEntradaDto() {
     }
 
-    public TurnosModificacionEntradaDto(LocalDateTime fechaYHora, Odontologo odontologo, Paciente paciente) {
-
+    public TurnosModificacionEntradaDto(LocalDateTime fechaYHora, OdontologoModificacionEntradaDto odontologoModificacionEntradaDto, PacienteModificacionEntradaDto pacienteModificacionEntradaDto) {
         this.fechaYHora = fechaYHora;
-        this.odontologo = odontologo;
-        this.paciente = paciente;
+        this.odontologoModificacionEntradaDto = odontologoModificacionEntradaDto;
+        this.pacienteModificacionEntradaDto = pacienteModificacionEntradaDto;
     }
 
     public Long getId() {
@@ -53,19 +52,19 @@ public class TurnosModificacionEntradaDto {
         this.fechaYHora = fechaYHora;
     }
 
-    public Odontologo getOdontologo() {
-        return odontologo;
+    public OdontologoModificacionEntradaDto getOdontologoModificacionEntradaDto() {
+        return odontologoModificacionEntradaDto;
     }
 
-    public void setOdontologo(Odontologo odontologo) {
-        this.odontologo = odontologo;
+    public void setOdontologoModificacionEntradaDto(OdontologoModificacionEntradaDto odontologoModificacionEntradaDto) {
+        this.odontologoModificacionEntradaDto = odontologoModificacionEntradaDto;
     }
 
-    public Paciente getPaciente() {
-        return paciente;
+    public PacienteModificacionEntradaDto getPacienteModificacionEntradaDto() {
+        return pacienteModificacionEntradaDto;
     }
 
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
+    public void setPacienteModificacionEntradaDto(PacienteModificacionEntradaDto pacienteModificacionEntradaDto) {
+        this.pacienteModificacionEntradaDto = pacienteModificacionEntradaDto;
     }
 }
