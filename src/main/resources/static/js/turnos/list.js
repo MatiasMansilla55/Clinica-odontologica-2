@@ -27,11 +27,11 @@ window.addEventListener('load', function () {
                     '</button>';
 
                 turnoRow.innerHTML = '<td>' + updateButton + '</td>' +
-                    '<td class="td_first_name">' + turno.fechaYHora + '</td>' +
-                    '<td class="td_first_name">' + (turno.paciente ? turno.paciente.nombre : '') + '</td>' +
-                    '<td class="td_first_name">' + (turno.paciente ? turno.paciente.apellido : '') + '</td>' +
-                    '<td class="td_last_name">' + (turno.odontologo ? turno.odontologo.nombre : '') + '</td>' +
-                    '<td class="td_last_name">' + (turno.odontologo ? turno.odontologo.apellido : '') + '</td>' +
+                    '<td class="td_date">' + turno.fechaYHora + '</td>' +
+                    '<td class="td_first_name_paciente">' + (turno.paciente ? turno.paciente.nombre : '') + '</td>' +
+                    '<td class="td_last_name_paciente">' + (turno.paciente ? turno.paciente.apellido : '') + '</td>' +
+                    '<td class="td_first_name_odontologo">' + (turno.odontologo ? turno.odontologo.nombre : '') + '</td>' +
+                    '<td class="td_last_name_odontologo">' + (turno.odontologo ? turno.odontologo.apellido : '') + '</td>' +
                     '<td>' + deleteButton + '</td>';
             }
         });

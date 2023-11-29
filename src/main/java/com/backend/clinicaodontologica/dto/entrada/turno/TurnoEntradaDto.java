@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 
 public class TurnoEntradaDto {
     @FutureOrPresent(message = "La fecha no puede ser anterior al día de hoy")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime fechaYHora;
 
     @NotNull(message = "El apellido del odontologo no puede ser nulo")
