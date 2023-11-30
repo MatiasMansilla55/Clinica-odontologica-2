@@ -22,7 +22,7 @@ public class TurnoController {
     }
 
     @PostMapping("/registrar")
-    
+
     public ResponseEntity<TurnoSalidaDto> guardar(@RequestBody TurnoEntradaDto turno) throws BadRequestException {
 
 
