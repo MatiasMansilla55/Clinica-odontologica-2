@@ -5,7 +5,6 @@ import com.backend.clinicaodontologica.entity.Paciente;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 
-import javax.validation.Valid;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;

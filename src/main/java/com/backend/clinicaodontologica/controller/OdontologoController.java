@@ -4,6 +4,7 @@ import com.backend.clinicaodontologica.dto.entrada.odontologo.OdontologoEntradaD
 import com.backend.clinicaodontologica.dto.modificacion.OdontologoModificacionEntradaDto;
 import com.backend.clinicaodontologica.dto.salida.odontologo.OdontologoSalidaDto;
 
+import com.backend.clinicaodontologica.exceptions.ResourceNotFoundException;
 import com.backend.clinicaodontologica.service.impl.IOdontologoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -49,7 +50,7 @@ public class OdontologoController {
         odontologoService.eliminarOdontologo(id);
     }
     @PutMapping("/actualizar")
-    public ResponseEntity<OdontologoSalidaDto> actualizarOdontologo(@RequestBody OdontologoModificacionEntradaDto odontologo){
+    public ResponseEntity<OdontologoSalidaDto> actualizarOdontologo(@RequestBody OdontologoModificacionEntradaDto odontologo) throws ResourceNotFoundException {
         return new ResponseEntity<>(odontologoService.actualizarOdontologo(odontologo),HttpStatus.OK);
     }
 }

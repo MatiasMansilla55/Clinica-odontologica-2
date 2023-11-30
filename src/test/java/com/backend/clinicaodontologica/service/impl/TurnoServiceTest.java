@@ -62,10 +62,10 @@ class TurnoServiceTest {
         assertFalse(turnoSalidaDtos.isEmpty());
     }
     @Test
-    void testCdeberiaBuscarUnTurnoPorIdigualA3() throws BadRequestException {
+    void testCdeberiaBuscarUnTurnoPorIdigualA1() throws BadRequestException {
 
-        TurnoSalidaDto turnoSalidaDto= turnoService.buscarTurnoPorId(3L);
-        assertFalse(turnoSalidaDto.getId()!=3);
+        TurnoSalidaDto turnoSalidaDto= turnoService.buscarTurnoPorId(1L);
+        assertFalse(turnoSalidaDto.getId()!=1);
     }
 
 }

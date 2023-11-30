@@ -1,6 +1,6 @@
 package com.backend.clinicaodontologica.dto.modificacion;
 
-import com.backend.clinicaodontologica.dto.entrada.paciente.DomicilioEntradaDto;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.validation.Valid;
