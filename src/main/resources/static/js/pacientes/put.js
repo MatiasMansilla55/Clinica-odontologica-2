@@ -38,7 +38,8 @@ window.addEventListener('load', function () {
     window.findBy =function findBy(id) {
           const url = 'http://localhost:8081/pacientes/buscarId'+"/"+id;
           const settings = {
-              method: 'GET'
+              method: 'GET',
+              mode:'cors',
           }
           fetch(url,settings)
           .then(response => response.json())

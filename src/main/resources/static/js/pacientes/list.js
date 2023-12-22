@@ -5,7 +5,8 @@ window.addEventListener('load', function () {
       //nos devolverá un JSON con una colección de estudiantes
       const url = 'http://localhost:8081/pacientes/listar';
       const settings = {
-        method: 'GET'
+        method: 'GET',
+        mode:'cors',
     }
     fetch(url,settings)
     .then(response => response.json())
@@ -51,14 +52,17 @@ window.addEventListener('load', function () {
                               '<td>' + deleteButton + '</td>';
 
         };
-
+        
 })
+.catch(error => {
+  console.error('Error en la solicitud fetch:', error);
+});
 })
 
 (function(){
   let pathname = window.location.pathname;
   if (pathname == "/pacientesList.html") {
-      document.querySelector(".nav .nav-item a:last").addClass("active");
+      document.querySelector(".nav .nav-item a:last").classList.add("active");
   }
 })
 

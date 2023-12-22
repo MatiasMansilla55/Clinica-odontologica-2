@@ -1,11 +1,12 @@
 window.addEventListener('load', function () {
-
+    
     (function(){
       //con fetch invocamos a la API de odontologo con el método GET
       //nos devolverá un JSON con una colección de odontologos
       const url = 'http://localhost:8081/odontologos/listar';
       const settings = {
-        method: 'GET'
+        method: 'GET',
+        mode: 'cors',
     }
     fetch(url,settings)
     .then(response => response.json())

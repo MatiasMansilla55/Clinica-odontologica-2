@@ -13,6 +13,7 @@ window.addEventListener('load', function () {
         const url = 'http://localhost:8081/odontologos/actualizar';
         const settings = {
             method: 'PUT',
+            mode:'cors',
             headers: {
                 'Content-Type': 'application/json',
             },

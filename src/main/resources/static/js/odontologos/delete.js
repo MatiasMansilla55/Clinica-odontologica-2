@@ -1,7 +1,8 @@
 function deleteBy(id) {
     const url = 'http://localhost:8081/odontologos/eliminar/' + id;
     const settings = {
-        method: 'DELETE'
+        method: 'DELETE',
+        mode:'cors',
     };
 
     fetch(url, settings)
