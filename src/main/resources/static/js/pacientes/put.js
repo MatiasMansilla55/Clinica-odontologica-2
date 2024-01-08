@@ -36,7 +36,7 @@ window.addEventListener('load', function () {
     //se encarga de llenar el formulario con los datos del paciente
     //que se desea modificar
     window.findBy =function findBy(id) {
-          const url = 'http://localhost:8081/pacientes/buscarId'+"/"+id;
+          const url = 'http://localhost:8081/pacientes/'+id;
           const settings = {
               method: 'GET',
               mode:'cors',

@@ -9,8 +9,8 @@ window.addEventListener('load', function () {
         .then(response => response.json())
         .then(data => {
             for (turno of data) {
-                var table = document.getElementById("turnoTable");
-                var turnoRow = table.insertRow();
+                let table = document.getElementById("turnoTable");
+                let turnoRow = table.insertRow();
                 let tr_id = 'tr_' + turno.id;
                 turnoRow.id = tr_id;
 

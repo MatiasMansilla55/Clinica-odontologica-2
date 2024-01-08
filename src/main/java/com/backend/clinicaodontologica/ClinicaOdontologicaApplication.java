@@ -27,9 +27,6 @@ public class ClinicaOdontologicaApplication {
 	}
 
 
-	//@GetMapping
-	//public String holaCamada(){
-		//return "Hola camada";
-	//}
+
 
 }

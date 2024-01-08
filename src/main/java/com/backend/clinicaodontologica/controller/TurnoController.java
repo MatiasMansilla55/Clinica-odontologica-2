@@ -6,6 +6,7 @@ import com.backend.clinicaodontologica.dto.modificacion.TurnosModificacionEntrad
 
 import com.backend.clinicaodontologica.dto.salida.turno.TurnoSalidaDto;
 import com.backend.clinicaodontologica.exceptions.BadRequestException;
+import com.backend.clinicaodontologica.exceptions.ResourceNotFoundException;
 import com.backend.clinicaodontologica.service.impl.ITurnoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -20,7 +21,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/turnos")
-@CrossOrigin(origins = "http://127.0.0.1:5500/")
+
 public class TurnoController {
     private ITurnoService turnoService;
 
@@ -74,7 +75,7 @@ public class TurnoController {
                     content = @Content)
     })
     @DeleteMapping("/eliminar/{id}")
-    public void eliminarOdontologo(@PathVariable Long id){
+    public void eliminarOdontologo(@PathVariable Long id) throws ResourceNotFoundException {
         turnoService.eliminarTurno(id);
     }
     @Operation(summary = "Actualización de un Turno")

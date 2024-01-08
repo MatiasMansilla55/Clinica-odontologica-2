@@ -12,6 +12,7 @@ import com.backend.clinicaodontologica.dto.salida.turno.TurnoSalidaDto;
 import com.backend.clinicaodontologica.entity.Turno;
 import com.backend.clinicaodontologica.exceptions.BadRequestException;
 
+import com.backend.clinicaodontologica.exceptions.ResourceNotFoundException;
 import com.backend.clinicaodontologica.repository.TurnoRepository;
 import com.backend.clinicaodontologica.utils.JsonPrinter;
 import org.modelmapper.ModelMapper;
@@ -91,8 +92,14 @@ public class TurnoService implements ITurnoService {
         }
 
         @Override
-        public void eliminarTurno(Long id) {
-            turnoRepository.deleteById(id);
+        public void eliminarTurno(Long id)throws ResourceNotFoundException{
+            if (buscarTurnoPorId(id) != null) {
+                turnoRepository.deleteById(id);
+                LOGGER.warn("Se ha eliminado el turno con id: {}", id);
+            } else {
+                LOGGER.error("No se ha encontrado el turno con id {}", id);
+                throw new ResourceNotFoundException("No se ha encontrado el turno con id " + id);
+            }
         }
 
         @Override

@@ -17,8 +17,8 @@ window.addEventListener('load', function () {
           //cada fila tendrá un id que luego nos permitirá borrar la fila si eliminamos
           //el odontologo
 
-          var table = document.getElementById("odontologoTable");
-          var odontologoRow =table.insertRow();
+          let  table = document.getElementById("odontologoTable");
+          let odontologoRow =table.insertRow();
           let tr_id = 'tr_' + odontologo.id;
           odontologoRow.id = tr_id;
 
@@ -31,7 +31,7 @@ window.addEventListener('load', function () {
                                       ' type="button" onclick="deleteBy('+odontologo.id+')" class="btn btn-danger btn_delete">' +
                                       '&times' +
                                       '</button>';
-
+                                  
            //por cada odontologo creamos un boton que muestra el id y que al hacerle clic invocará
            //a la función de java script findBy que se encargará de buscar al odontologo que queremos
            //modificar y mostrar los datos del mismo en un formulario.
@@ -40,8 +40,7 @@ window.addEventListener('load', function () {
                                       ' type="button" onclick="findBy('+odontologo.id+')" class="btn btn-info btn_id">' +
                                       odontologo.id +
                                       '</button>';
-
-
+                                   
           //armamos cada columna de la fila
           //como primer columna pondremos el boton modificar
           //luego los datos del odontologo

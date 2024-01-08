@@ -17,7 +17,13 @@ function deleteBy(id) {
         .then(data => {
             // Hacer algo con la respuesta si es necesario
             console.log('Respuesta del servidor:', data);
-
+               Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Turno eliminado con exito",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
             // Borrar la fila del turno eliminado
             let row_id = "#tr_" + id;
             document.querySelector(row_id).remove();

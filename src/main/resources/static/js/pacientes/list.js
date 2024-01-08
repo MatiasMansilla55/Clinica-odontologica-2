@@ -17,8 +17,8 @@ window.addEventListener('load', function () {
           //cada fila tendrá un id que luego nos permitirá borrar la fila si eliminamos
           //el paciente
 
-          var table = document.getElementById("pacienteTable");
-          var pacienteRow =table.insertRow();
+          let table = document.getElementById("pacienteTable");
+          let pacienteRow =table.insertRow();
           let tr_id = 'tr_' + paciente.id;
           pacienteRow.id = tr_id;
 

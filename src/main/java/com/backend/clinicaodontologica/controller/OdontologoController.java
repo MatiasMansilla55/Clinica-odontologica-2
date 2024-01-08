@@ -20,7 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/odontologos")
-@CrossOrigin(origins = "http://127.0.0.1:5500")
+
 public class OdontologoController {
     public IOdontologoService odontologoService;
 
@@ -96,7 +96,7 @@ public class OdontologoController {
                     content = @Content)
     })
     @DeleteMapping("/eliminar/{id}")
-    public void eliminarOdontologo(@PathVariable Long id){
+    public void eliminarOdontologo(@PathVariable Long id) throws ResourceNotFoundException {
         odontologoService.eliminarOdontologo(id);
     }
     @Operation(summary = "Actualización de un odontologo")
